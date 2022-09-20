@@ -76,12 +76,12 @@ public class EmployeeService {
         }
 
         if (todo.size() > 1) {
-            throw new RuntimeException("There have more than 1 root");
+            throw new RuntimeException("There had more than 1 root");
         }
         if (todo.isEmpty()) {
-            throw new RuntimeException("There have a loop");
+            throw new RuntimeException("There had a loop");
         }
-        Map<String, Map> result = new HashMap();
+        Map<String, Map> result = new HashMap<>();
         result.put(todo.getFirst(), new HashMap<>());
         dfs(result, employeesOf, mapEmpl);
         employeeRepository.deleteAll();

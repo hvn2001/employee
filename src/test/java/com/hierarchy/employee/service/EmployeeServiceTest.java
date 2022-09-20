@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class EmployeeServiceTest {
+class EmployeeServiceTest {
     @InjectMocks
     private EmployeeService employeeService;
 
@@ -68,19 +68,20 @@ public class EmployeeServiceTest {
             }
         }
         * */
-        Assertions.assertEquals(output.keySet().contains("Jonas"), true);
+        Assertions.assertTrue(output.containsKey("Jonas"));
         Map layer2 = output.get("Jonas");
-        Assertions.assertEquals(layer2.containsKey("Sophie"), true);
+        Assertions.assertTrue(layer2.containsKey("Sophie"));
         Map layer3 = (Map) layer2.get("Sophie");
-        Assertions.assertEquals(layer3.containsKey("Nick"), true);
+        Assertions.assertTrue(layer3.containsKey("Nick"));
         Map layer4 = (Map) layer3.get("Nick");
-        Assertions.assertEquals(layer4.containsKey("Pete"), true);
-        Assertions.assertEquals(layer4.containsKey("Barbara"), true);
+        Assertions.assertEquals(2, layer4.size());
+        Assertions.assertTrue(layer4.containsKey("Pete"));
+        Assertions.assertTrue(layer4.containsKey("Barbara"));
 
         Map layer51 = (Map) layer4.get("Pete");
-        Assertions.assertEquals(layer51.containsKey("frontend"), true);
+        Assertions.assertTrue(layer51.containsKey("frontend"));
         Map layer52 = (Map) layer4.get("Barbara");
-        Assertions.assertEquals(layer52.containsKey("backend"), true);
+        Assertions.assertTrue(layer52.containsKey("backend"));
 
     }
 
