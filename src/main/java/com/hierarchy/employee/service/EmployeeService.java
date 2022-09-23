@@ -15,6 +15,7 @@ import java.util.Set;
 @Service
 public class EmployeeService {
 
+    public static final String INVALID_HIERARCHY = "Invalid Hierarchy";
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
@@ -46,7 +47,13 @@ public class EmployeeService {
         Map<String, Set<String>> supervisorOf = new HashMap<>();
         Map<String, List<String>> employeesOf = new HashMap<>();
         Set<String> numEmpl = new HashSet<>();
+        if (prerequisites.isEmpty()) {
+            throw new RuntimeException(INVALID_HIERARCHY);
+        }
         for (Map.Entry<String, String> p : prerequisites.entrySet()) {
+            if (p.getKey().equals(p.getValue())) {
+                throw new RuntimeException(INVALID_HIERARCHY);
+            }
             supervisorOf.putIfAbsent(p.getKey(), new HashSet<>());
             supervisorOf.putIfAbsent(p.getValue(), new HashSet<>());
             employeesOf.putIfAbsent(p.getValue(), new ArrayList<>());
