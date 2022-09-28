@@ -24,5 +24,4 @@ public class Employee {
 
     private String name;
     private String supervisor;
-    private Integer supervisorId;
 }
