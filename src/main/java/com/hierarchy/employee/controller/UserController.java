@@ -3,7 +3,6 @@ package com.hierarchy.employee.controller;
 import com.hierarchy.employee.config.JwtUtil;
 import com.hierarchy.employee.dto.AuthenticationResponse;
 import com.hierarchy.employee.dto.UserDto;
-import com.hierarchy.employee.model.User;
 import com.hierarchy.employee.service.UserDetailService;
 import com.hierarchy.employee.service.UserService;
 import com.hierarchy.employee.dto.AuthenticationRequest;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.UUID;
 
 @Validated
